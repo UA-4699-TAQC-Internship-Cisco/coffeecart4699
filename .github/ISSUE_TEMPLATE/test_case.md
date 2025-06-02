@@ -1,8 +1,9 @@
 ---
+type: "Test case"
 name: "Test Case"
 about: "Шаблон для створення тестового кейсу"
 title: "[Test Case]: "
-labels: ["Test case"]
+labels: ["UI"]
 assignees: []
 ---
 
@@ -43,5 +44,3 @@ If applicable, add screenshots to help explain your test.
 Add any other context about the test here.  
  
  User story links E.g.: "User story #100 "
-
-Labels to be added "Test case", Priority ("pri: "), Type ("UI, "Functional"), "API" .
