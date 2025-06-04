@@ -195,3 +195,12 @@ cython_debug/
 
 ### Mac OS ###
 .DS_Store
+
+
+### driver ###
+chromedriver.exe
+
+# Robot Ouput files
+log.html
+output.xml
+report.html
