@@ -10,7 +10,9 @@ Verify That Right-Clicking On A Coffee Icon Opens The "Add To Cart" Dialog
 
 *** Keywords ***
 Right Click On Coffee Icon
-    Right Click Element    css:div[data-test="Espresso"]
+    Execute Javascript    var evt = new MouseEvent('contextmenu', {bubbles: true, cancelable: true, view: window});
+    document.querySelector('div[data-test="Espresso"]').dispatchEvent(evt);
+
 
 
 Verify Add To Cart Dialog Appears
