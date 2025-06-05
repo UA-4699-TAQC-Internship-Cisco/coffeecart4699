@@ -2,7 +2,6 @@
 Resource        ../src/resources/pages/menu_page.robot
 Library         SeleniumLibrary
 
-
 *** Variables ***
 ${BROWSER}          Chrome
 ${URL}              https://coffee-cart.app/
