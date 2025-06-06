@@ -31,3 +31,18 @@ Click Promotional Dialog Button No
 Click Another Coffee Item During Dialog
     [Arguments]    ${item_name}
     Click Element    xpath=//div[contains(@data-test, "${item_name}")]
+
+Add Espresso To Cart
+    Click Element    css:div[data-test="Espresso"]
+
+Open Cart
+    Click Element    xpath = //a[@aria-label="Cart page" and contains(@href, "/cart")]
+
+Reload Current Page
+    Reload Page
+
+Cart Icon Should Show Items
+    Wait Until Element Is Visible    xpath=//*[@id="app"]/div[2]    10s
+    ${item_text}=    Get Text    xpath=//*[@id="app"]/div[2]/div/ul/li[2]
+    Should Contain    ${item_text}    Espresso
+    Should Contain    ${item_text}    1
