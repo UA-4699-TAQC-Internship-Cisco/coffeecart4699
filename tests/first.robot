@@ -11,8 +11,6 @@ ${Empty_COUNT}  0
 
 
 *** Test Cases ***
-first
-    Log    Hello World
 
 Open
     Open Browser         ${URL}             ${BROWSER}
