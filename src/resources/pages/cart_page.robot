@@ -4,7 +4,7 @@ Library         SeleniumLibrary
 *** Variables ***
 ${ESPRESSO_PLUS_XPATH}        //*[@id="app"]/div[2]/div/ul/li[2]/div[2]/div/button[1]
 ${ESPRESSO_MINUS_XPATH}       //*[@id="app"]/div[2]/div/ul/li[2]/div[2]/div/button[2]
-${DELETE_BUTTON_XPATH}      //*[@id="app"]/div[2]/div/ul/li
+${DELETE_BUTTON_XPATH}      //*[@id="app"]/div[2]/div/ul/li[@class="list-item"]
 
 
 
@@ -32,6 +32,4 @@ Delete Few Elements
     ${count}=    Get Length    ${delete_buttons}
     FOR    ${index}    IN RANGE    ${count}
         Click Element    xpath=//*[@id="app"]/div[2]/div/ul/li[2]/div[4]/button
-
-
     END
