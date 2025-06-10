@@ -14,12 +14,11 @@ Go to Card Page
     Wait Until Element Is Visible    ${CART_PAGE_LINK_XPATH}
     Click Link    ${CART_PAGE_LINK_XPATH}
 
-Add Espresso to cart
-    Click Element      ${ESPRESSO_LINK_XPATH}
+Add Item to cart
+    [Arguments]  ${locator}
+    Click Element       ${locator}
 
 
-Add Americano to cart
-    Click Element      ${AMERICANO_LINK_XPATH}
 
 Verify Items Count
     [Arguments]  ${exp_count}

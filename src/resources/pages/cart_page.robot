@@ -33,3 +33,13 @@ Delete Few Elements
     FOR    ${index}    IN RANGE    ${count}
         Click Element    xpath=//*[@id="app"]/div[2]/div/ul/li[2]/div[4]/button
     END
+
+
+
+Verify Text
+    [Arguments]    ${locator}    ${expected}
+     ${text}=    Get Text        ${locator}
+     ${result}=    Evaluate    " ".join("""${text}""".split())
+
+    Should Be Equal As Strings    ${result}   ${expected}
+
