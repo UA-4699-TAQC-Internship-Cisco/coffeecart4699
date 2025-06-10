@@ -17,9 +17,6 @@ class CartPreview(object):
     def get_pay_coffe_list(self):
         l = []
         for i in range(1, len(self.sel.get_webelements(self.items))+1):
-
             element = self.sel.get_webelement(self.item_xpath.format(i))
             l.append(element.get_attribute('innerHTML'))
         return l
-
-
