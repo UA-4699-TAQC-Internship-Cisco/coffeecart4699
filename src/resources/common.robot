@@ -1,9 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-
-*** Variables ***
-${BROWSER}    Chrome
-${URL}        https://coffee-cart.app/
+Resource   ./variables.resource
 
 *** Keywords ***
 Open Browser To Menu Page

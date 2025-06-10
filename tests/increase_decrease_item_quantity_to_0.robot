@@ -6,8 +6,6 @@ Library         SeleniumLibrary
 Test Setup      Open Browser To Menu Page
 Test Teardown   Teardown Browser
 
-*** Variables ***
-${DELETE_BUTTON}    xpath://*[@id="app"]/div[2]/div/ul/li[2]/div[4]/button
 
 *** Test Cases ***
 
