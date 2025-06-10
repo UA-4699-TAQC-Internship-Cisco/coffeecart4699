@@ -1,31 +1,31 @@
 *** Settings ***
 Resource    ../src/resources/common.robot
-Resource    ../src/resources/pages/yuliia_tests_data.robot
+Resource    ../src/resources/pages/menu_page.robot
 
 
 *** Test Cases ***
 Add Promotional Item
     Open Browser To Menu Page
-    Add Coffee Item To Cart    Espresso     # 1
+    Click On Coffee By Name    Espresso
     Cart Icon Should Show Count    1
-    Add Coffee Item To Cart    Espresso_Macchiato     # 2
+    Click On Coffee By Name    Espresso_Macchiato
     Cart Icon Should Show Count    2
-    Add Coffee Item To Cart    Cappuccino     # 3
+    Click On Coffee By Name    Cappuccino
     Promotional Dialog Should Appear
     Click Promotional Dialog Button Yes
     Cart Icon Should Show Count    4
-    Add Coffee Item To Cart    Espresso     # 5
+    Click On Coffee By Name    Espresso
     Cart Icon Should Show Count    5
-    Add Coffee Item To Cart    Espresso_Macchiato     # 6
+    Click On Coffee By Name    Espresso_Macchiato
     Promotional Dialog Should Appear
     Click Promotional Dialog Button No
     Cart Icon Should Show Count    6
-    Add Coffee Item To Cart    Cappuccino     # 7
+    Click On Coffee By Name    Cappuccino
     Cart Icon Should Show Count    7
-    Add Coffee Item To Cart    Espresso     # 8
+    Click On Coffee By Name    Espresso
     Cart Icon Should Show Count    8
-    Add Coffee Item To Cart    Espresso_Macchiato     # 9
+    Click On Coffee By Name    Espresso_Macchiato
     Promotional Dialog Should Appear
-    Click Another Coffee Item During Dialog    Cappuccino
+    Click On Coffee By Name    Cappuccino
     Cart Icon Should Show Count    10
     Teardown Browser
