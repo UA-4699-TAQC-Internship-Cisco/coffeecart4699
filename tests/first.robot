@@ -5,20 +5,22 @@ Library         SeleniumLibrary
 
 *** Variables ***
 
-${BROWSER}         Chrome
-${URL}             https://coffee-cart.app/
+${BROWSER}      Chrome
+${URL}          https://coffee-cart.app/
+${Empty_COUNT}  0
+@{EXPECTED_LIST}  Espresso
+
+
 
 *** Test Cases ***
-first
-
-    Log    Hello World
 
 Open
-    Open Browser    ${URL}      ${BROWSER}
-    sleep   5
-    Add Espresso to cart
-    sleep   3
+    Open Browser         ${URL}             ${BROWSER}
     Go to Card Page
-
-    sleep   5
+#    Go to Card Page
+    Verify Items Count    ${Empty_COUNT}
+    Click Items
+    Click Items
+    ${list_items}    Get Pay Coffe List
+    Verify Items    ${list_items}    ${EXPECTED_LIST}
     Close Browser

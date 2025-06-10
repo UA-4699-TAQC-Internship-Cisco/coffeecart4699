@@ -14,10 +14,9 @@ ${DELETE_BUTTON}    xpath://*[@id="app"]/div[2]/div/ul/li[2]/div[4]/button
 Delete one item by tapping x button
 
     Add Espresso to cart
-    sleep   1
+
     Go to Card Page
-    sleep   1
+
     Increase Quantity Of Item
-    sleep   3
+
     Decrease Quantity Of Item
-    sleep   2

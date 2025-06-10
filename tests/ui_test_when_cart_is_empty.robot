@@ -5,8 +5,6 @@ Library         SeleniumLibrary
 Test Setup      Open Browser To Menu Page
 Test Teardown   Teardown Browser
 
-*** Variables ***
-${TEXT_XPATH}=    Get Text    xpath://*[@id="app"]/div[2]/p
 
 *** Test Cases ***
 
@@ -14,6 +12,6 @@ Delete one item by tapping x button
 
 
     Go to Card Page
-    sleep   1
-    Should Be Equal As Strings    ${TEXT_XPATH}    "No coffee, go add some."
-    sleep   1
+    ${cart_text}=    Get Text       xpath://*[@id="app"]/div[2]/p
+    ${result}=    Evaluate    " ".join("""${cart_text}""".split())
+    Should Be Equal As Strings    ${result}    No coffee, go add some.
