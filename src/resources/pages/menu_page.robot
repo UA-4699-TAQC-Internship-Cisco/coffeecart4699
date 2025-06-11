@@ -17,6 +17,7 @@ ${TOTAL_BUTTON_XPATH}        //*[@id="app"]/div[2]/div[1]/button
 ${POP_UP_MENU_XPATH}        //*[@id="app"]/div[2]/div[1]/ul/li
 ${POP_UP_MENU_ITEMS_XPATH}        //*[@id="app"]/div[2]/div[1]/ul
 
+
 *** Keywords ***
 Go to Card Page
     Wait Until Element Is Visible    ${CART_PAGE_LINK_XPATH}
@@ -101,3 +102,4 @@ Check Items Count
     [Arguments]  ${exp_count}
     ${count}=    Get Element Count      ${POP_UP_MENU_XPATH}
     Should Be Equal As Integers    ${count}    ${exp_count}
+
