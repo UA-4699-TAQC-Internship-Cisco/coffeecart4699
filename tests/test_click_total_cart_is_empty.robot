@@ -9,4 +9,4 @@ Proceed Payment When Cart Is Empty
     Open Payment Form
     Fill Payment Details
     Submit Order
-    Close Browser
+    Teardown Browser
