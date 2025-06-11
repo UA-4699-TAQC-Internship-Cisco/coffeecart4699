@@ -87,6 +87,21 @@ Cart Icon Should Show Items
     Should Contain    ${item_text}    ${drink_name}
     Should Contain    ${item_text}    ${expected_quantity}
 
+Cart Icon Should Show Count
+    [Arguments]    ${expected_count}
+    ${text}=    Get Text    xpath=//a[contains(@aria-label, "Cart page")]
+    Log    Cart icon text: ${text}
+    Should Contain    ${text}    (${expected_count})
+
+Promotional Dialog Should Appear
+    Wait Until Element Is Visible    xpath=//div[contains(@class, "promo")]    ${IMPLICIT_WAIT}
+
+Click Promotional Dialog Button Yes
+    Click Button    css:div.promo button.yes
+
+Click Promotional Dialog Button No
+    Click Button    xpath=//div[contains(@class, "promo")]//button[normalize-space(text())="Nah, I'll skip."]
+
 Add First Item To Cart
     Click Element    ${PRODUCT_CARD_XPATH}
 
@@ -125,4 +140,3 @@ Check Items Count
     [Arguments]  ${exp_count}
     ${count}=    Get Element Count      ${POP_UP_MENU_XPATH}
     Should Be Equal As Integers    ${count}    ${exp_count}
-
