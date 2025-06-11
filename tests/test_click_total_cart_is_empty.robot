@@ -1,6 +1,6 @@
 *** Settings ***
 Resource        ../src/resources/pages/menu_page.robot
-Library         SeleniumLibrary
+Resource        ../src/resources/common.robot
 
 *** Variables ***
 ${BROWSER}               Chrome
@@ -8,8 +8,9 @@ ${URL}                  https://coffee-cart.app/
 
 *** Test Cases ***
 Proceed Payment When Cart Is Empty
-    Open Browser                 ${URL}    ${BROWSER}
-    Click Element                ${TOTAL_BUTTON}
-    Proceed Payment
-    Set Selenium Implicit Wait    10 seconds
+    Open Browser To Menu Page
+    Element Should Contain    ${TOTAL_BUTTON_XPATH}    Total: $0.00
+    Open Payment Form
+    Fill Payment Details
+    Submit Order
     Close Browser
