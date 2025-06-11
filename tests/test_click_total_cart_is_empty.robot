@@ -2,10 +2,6 @@
 Resource        ../src/resources/pages/menu_page.robot
 Resource        ../src/resources/common.robot
 
-*** Variables ***
-${BROWSER}               Chrome
-${URL}                  https://coffee-cart.app/
-
 *** Test Cases ***
 Proceed Payment When Cart Is Empty
     Open Browser To Menu Page
