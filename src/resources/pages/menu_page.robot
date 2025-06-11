@@ -1,5 +1,7 @@
 *** Settings ***
 Library         SeleniumLibrary
+Library         Collections
+Library         ../src/scripts/CartPreview.py
 
 *** Variables ***
 ${CART_PAGE_LINK_XPATH}        //a[@aria-label="Cart page"]
@@ -9,6 +11,8 @@ ${CART_PREVIEW_XPATH}          //ul[contains(@class, 'cart-preview')]
 ${CART_ITEM_XPATH}             //ul[contains(@class, 'cart-preview')]/li[contains(@class, 'list-item')]
 ${UNIT_DESC_XPATH}             //span[contains(@class, 'unit-desc') and contains(text(), 'x')]
 ${PROCEED_BUTTON_XPATH}        //button[@aria-label="Proceed to checkout"]
+${ESPRESSO_LINK_XPATH}         //*[@id="app"]/div[2]/ul/li[1]/div/div/div[1]
+${AMERICANO_LINK_XPATH}        //*[@id="app"]/div[2]/ul/li[6]/div/div/div[1]
 
 *** Keywords ***
 Go to Card Page
@@ -36,3 +40,22 @@ Verify Cart Preview Content
 
 Capture Cart Screenshot
     Capture Element Screenshot     ${CART_PREVIEW_XPATH}
+
+Add Espresso to cart
+    Click Element      ${ESPRESSO_LINK_XPATH}
+
+Add Americano to cart
+    Click Element      ${AMERICANO_LINK_XPATH}
+
+Verify Items Count
+    [Arguments]  ${exp_count}
+    ${count}=    Get Items Count
+    Should Be Equal    ${count}    ${exp_count}
+
+Verify Items
+    [Arguments]    ${list_items}    ${EXPECTED_LIST}
+    Lists Should Be Equal    ${list_items}    ${EXPECTED_LIST}
+
+Click Items
+    Wait Until Element Is Visible    ${ESPRESSO_LINK_XPATH}     timeout=10s
+    Click Element   ${ESPRESSO_LINK_XPATH}
