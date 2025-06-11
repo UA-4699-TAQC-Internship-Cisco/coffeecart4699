@@ -10,9 +10,12 @@ ${CART_PREVIEW_XPATH}          //ul[contains(@class, 'cart-preview')]
 ${CART_ITEM_XPATH}             //ul[contains(@class, 'cart-preview')]/li[contains(@class, 'list-item')]
 ${UNIT_DESC_XPATH}             //span[contains(@class, 'unit-desc') and contains(text(), 'x')]
 ${PROCEED_BUTTON_XPATH}        //button[@aria-label="Proceed to checkout"]
+
 ${ESPRESSO_LINK_XPATH}         //*[@id="app"]/div[2]/ul/li[1]/div/div/div[1]
 ${AMERICANO_LINK_XPATH}        //*[@id="app"]/div[2]/ul/li[6]/div/div/div[1]
 ${CAFE_LATE_LINK_XPATH}        //*[@id="app"]/div[2]/ul/li[7]/div/div
+
+${DIALOG_ADD_TO_CART_CSS}   css:#app > dialog
 ${TOTAL_BUTTON_XPATH}        //*[@id="app"]/div[2]/div[1]/button
 ${POP_UP_MENU_XPATH}        //*[@id="app"]/div[2]/div[1]/ul/li
 ${POP_UP_MENU_ITEMS_XPATH}        //*[@id="app"]/div[2]/div[1]/ul
@@ -63,6 +66,26 @@ Verify Items
 Click Items
     Wait Until Element Is Visible    ${ESPRESSO_LINK_XPATH}     timeout=10s
     Click Element   ${ESPRESSO_LINK_XPATH}
+
+Click On Coffee By Name
+    [Arguments]    ${drink_name}
+    ${xpath}=    Set Variable    //div[@data-test="${drink_name}"]
+    Click Element    xpath=${xpath}
+
+Right Click On Coffee By Name
+    [Arguments]    ${drink_name}
+    ${xpath}=    Set Variable    //div[@data-test="${drink_name}"]
+    Open Context Menu    xpath=${xpath}
+
+Verify Add To Cart Dialog Appears
+    Wait Until Element Is Visible    ${DIALOG_ADD_TO_CART_CSS}    ${IMPLICIT_WAIT}
+
+Cart Icon Should Show Items
+    [Arguments]    ${drink_name}    ${expected_quantity}
+    Wait Until Element Is Visible    xpath=//*[@id="app"]/div[2]    ${IMPLICIT_WAIT}
+    ${item_text}=    Get Text    xpath=//*[@id="app"]/div[2]/div/ul/li[2]
+    Should Contain    ${item_text}    ${drink_name}
+    Should Contain    ${item_text}    ${expected_quantity}
 
 Add First Item To Cart
     Click Element    ${PRODUCT_CARD_XPATH}
