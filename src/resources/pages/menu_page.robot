@@ -144,3 +144,7 @@ Check Items Count
     [Arguments]  ${exp_count}
     ${count}=    Get Element Count      ${POP_UP_MENU_XPATH}
     Should Be Equal As Integers    ${count}    ${exp_count}
+
+Double Click On Title
+    [Arguments]    ${drink_number}
+    Double Click Element    //*[@id="app"]/div[2]/ul/li[${drink_number}]/h4
