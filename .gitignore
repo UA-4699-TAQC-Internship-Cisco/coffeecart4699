@@ -201,6 +201,7 @@ cython_debug/
 chromedriver.exe
 
 # Robot Ouput files
+report/
 log.html
 output.xml
 report.html
