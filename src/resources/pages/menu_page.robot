@@ -26,6 +26,10 @@ Go to Card Page
     Wait Until Element Is Visible    ${CART_PAGE_LINK_XPATH}
     Click Link    ${CART_PAGE_LINK_XPATH}
 
+Add Item to cart
+    [Arguments]  ${locator}
+    Click Element       ${locator}
+
 Ensure Product Is Visible
     Page Should Contain Element    ${PRODUCT_CARD_XPATH}
 

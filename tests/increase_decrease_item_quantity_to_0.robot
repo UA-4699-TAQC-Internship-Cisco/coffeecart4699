@@ -6,12 +6,15 @@ Library         SeleniumLibrary
 Test Setup      Open Browser To Menu Page
 Test Teardown   Teardown Browser
 
+*** Variables ***
+${ESPRESSO_LINK_XPATH}         //*[@id="app"]/div[2]/ul/li[1]/div/div/div[1]
+
 
 *** Test Cases ***
 
 Delete one item by tapping x button
 
-    Add Espresso to cart
+    Add Item to cart    ${ESPRESSO_LINK_XPATH}
 
     Go to Card Page
 
