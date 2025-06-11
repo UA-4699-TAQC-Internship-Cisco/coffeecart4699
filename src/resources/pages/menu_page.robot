@@ -145,6 +145,8 @@ Check Items Count
     ${count}=    Get Element Count      ${POP_UP_MENU_XPATH}
     Should Be Equal As Integers    ${count}    ${exp_count}
 
-Double Click On Title
-    [Arguments]    ${drink_number}
+Verify Translation By Double Click
+    [Arguments]    ${drink_number}    &{Translation}
     Double Click Element    //*[@id="app"]/div[2]/ul/li[${drink_number}]/h4
+    Element Should Contain    //*[@id="app"]/div[2]/ul/li[${drink_number}]/h4    ${Translation}[${drink_number}]
+
