@@ -10,7 +10,7 @@ ${URL}          https://coffee-cart.app/
 Verify No Promo Item Appears After Adding Items via Cart Preview
     [Documentation]    This test ensures no promotional item appears after adding 3+ items using cart preview only.
 
-    Open Browser       ${URL}    ${BROWSER}    executable_path=C:/WebDrivers/chromedriver-win64/chromedriver.exe
+    Open Browser       ${URL}    ${BROWSER}
     Set Window Size    1600    1000
     Set Selenium Implicit Wait   10
 
