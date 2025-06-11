@@ -12,6 +12,10 @@ ${UNIT_DESC_XPATH}             //span[contains(@class, 'unit-desc') and contains
 ${PROCEED_BUTTON_XPATH}        //button[@aria-label="Proceed to checkout"]
 ${ESPRESSO_LINK_XPATH}         //*[@id="app"]/div[2]/ul/li[1]/div/div/div[1]
 ${AMERICANO_LINK_XPATH}        //*[@id="app"]/div[2]/ul/li[6]/div/div/div[1]
+${CAFE_LATE_LINK_XPATH}        //*[@id="app"]/div[2]/ul/li[7]/div/div
+${TOTAL_BUTTON_XPATH}        //*[@id="app"]/div[2]/div[1]/button
+${POP_UP_MENU_XPATH}        //*[@id="app"]/div[2]/div[1]/ul/li
+${POP_UP_MENU_ITEMS_XPATH}        //*[@id="app"]/div[2]/div[1]/ul
 
 *** Keywords ***
 Go to Card Page
@@ -80,3 +84,20 @@ Verify Cart Is Empty
 
 Verify Modal Is Hidden
     Wait Until Keyword Succeeds    10x    1s    Element Attribute Value Should Be    xpath=//div[contains(@class, "modal")]    style    display: none;
+
+Add Cafe Latte to cart
+    Click Element   ${CAFE_LATE_LINK_XPATH}
+
+Open Pop Up Menu
+    Mouse Over    ${TOTAL_BUTTON_XPATH}
+    Wait Until Element Is Visible    ${POP_UP_MENU_XPATH}
+
+Check IS Item In Cart
+    [Arguments]    ${exp_item_with_number}
+    ${item_list}=    Get Text    ${POP_UP_MENU_ITEMS_XPATH}
+    Should Contain    ${item_list}    ${exp_item_with_number}
+
+Check Items Count
+    [Arguments]  ${exp_count}
+    ${count}=    Get Element Count      ${POP_UP_MENU_XPATH}
+    Should Be Equal As Integers    ${count}    ${exp_count}
