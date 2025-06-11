@@ -1,18 +1,25 @@
 *** Settings ***
 Resource        ../src/resources/pages/menu_page.robot
+Resource        ../src/variables.resource
 Library         SeleniumLibrary
 
 
 *** Variables ***
-${BROWSER}          Chrome
-${URL}              https://coffee-cart.app/
+${Empty_COUNT}  0
+@{EXPECTED_LIST}  Espresso
+
 
 
 *** Test Cases ***
-first
-    Log    Hello World
 
 Open
     Open Browser         ${URL}             ${BROWSER}
-    Go to Card Page
+#    Go to Card Page
+    Maximize Browser Window
+    Verify Items Count    ${Empty_COUNT}
+    Click Items
+    Click Items
+    Open Context Menu    //div[@data-test="Espresso"]
+    ${list_items}    Get Pay Coffe List
+    Verify Items    ${list_items}    ${EXPECTED_LIST}
     Close Browser
