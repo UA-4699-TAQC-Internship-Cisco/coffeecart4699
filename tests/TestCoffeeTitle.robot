@@ -10,5 +10,5 @@ ${URL}                  https://coffee-cart.app/
 Double Click Coffee Title
     Open Browser                 ${URL}             ${BROWSER}
     Double Click Element         ${CAPPUCCINO_TITLE}
-    Set Selenium Implicit Wait        10 seconds
+    Set Selenium Implicit Wait        15 seconds
     Close Browser
