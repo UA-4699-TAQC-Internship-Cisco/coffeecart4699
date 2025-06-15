@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import email
 import mailbox
 import os
