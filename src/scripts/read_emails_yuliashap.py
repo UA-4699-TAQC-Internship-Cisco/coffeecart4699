@@ -30,15 +30,11 @@ def read_mailbox():
         sender = message['from']
         subject = message['subject']
 
-        if message.is_multipart():
-            body_parts = [part.get_payload(decode=True) for part in message.walk() if
-                          part.get_content_type() == 'text/plain']
-            body = ''.join(body_parts)
-        else:
-            body = message.get_payload(decode=True)
-
+        body = message.get_payload(decode=True)
         if body:
             body = body.decode('utf-8', 'ignore')
+        else:
+            body = ''
 
         print "From: {}".format(sender)
         print "Subject: {}".format(subject)
