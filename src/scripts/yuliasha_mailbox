@@ -1,0 +1,69 @@
+From root@localhost.localdomain  Sun Jun 15 17:14:16 2025
+Return-Path: <root@localhost.localdomain>
+X-Original-To: yuliasha
+Delivered-To: yuliasha@localhost.localdomain
+Received: by localhost.localdomain (Postfix, from userid 0)
+	id 816E23097EB2; Sun, 15 Jun 2025 17:11:35 +0300 (EEST)
+Date: Sun, 15 Jun 2025 17:11:35 +0300
+To: yuliasha@localhost.localdomain
+Subject: Test mail
+User-Agent: s-nail v14.9.22
+Message-Id: <20250615141416.816E23097EB2@localhost.localdomain>
+From: root <root@localhost.localdomain>
+Status: RO
+
+Hi there, Yulia!
+
+From python@localhost  Sun Jun 15 18:21:07 2025
+Return-Path: <python@localhost>
+X-Original-To: yuliasha@localhost
+Delivered-To: yuliasha@localhost
+Received: from 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa (unknown [192.168.0.110])
+	by localhost.localdomain (Postfix) with ESMTP id 71C5F3097E9C
+	for <yuliasha@localhost>; Sun, 15 Jun 2025 18:21:07 +0300 (EEST)
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Message from Python
+From: python@localhost
+To: yuliasha@localhost
+Status: RO
+
+Hello! This is a test email sent from a Python script.
+
+From python@localhost  Sun Jun 15 18:31:14 2025
+Return-Path: <python@localhost>
+X-Original-To: yuliasha@localhost
+Delivered-To: yuliasha@localhost
+Received: from 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa (unknown [192.168.0.110])
+	by localhost.localdomain (Postfix) with ESMTP id 9F1F43097E9C
+	for <yuliasha@localhost>; Sun, 15 Jun 2025 18:31:14 +0300 (EEST)
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Message from Python2
+From: python@localhost
+To: yuliasha@localhost
+Status: RO
+
+Hello! This is a second test email sent from a Python script.
+
+From python@localhost  Sun Jun 15 19:25:51 2025
+Return-Path: <python@localhost>
+X-Original-To: yuliasha@localhost
+Delivered-To: yuliasha@localhost
+Received: from localhost.localdomain (localhost [IPv6:::1])
+	by localhost.localdomain (Postfix) with ESMTP id 207B83206D00
+	for <yuliasha@localhost>; Sun, 15 Jun 2025 19:25:51 +0300 (EEST)
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Message from centos
+From: python@localhost
+To: yuliasha@localhost
+Message-Id: <20250615162551.207B83206D00@localhost.localdomain>
+Date: Sun, 15 Jun 2025 19:25:51 +0300 (EEST)
+Status: RO
+
+Hello from CentOs
+

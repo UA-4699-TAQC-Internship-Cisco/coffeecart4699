@@ -1,39 +1,51 @@
-import email
 import mailbox
 import os
+import subprocess
+import sys
 
-MAILBOX_PATH = '/var/spool/mail/yuliasha'
+# Define the remote user, host, and mailbox file path on the CentOS VM
+REMOTE_USER = "yuliasha"
+REMOTE_HOST = "192.168.0.149"
+REMOTE_PATH = "/var/spool/mail/yuliasha"
+# Define the local file path where the mailbox will be saved on the Mac
+LOCAL_PATH = "yuliasha_mailbox"
 
-# with open('/var/spool/mail/yuliasha', 'r') as f:
-#     print(f.read(500))
 
-if not os.path.exists(MAILBOX_PATH):
-    print("Mailbox file does not exist:", MAILBOX_PATH)
-    exit(1)
+def scp_mailbox():
+    """
+        Copy the mailbox file from the remote CentOS machine to the local Mac machine
+        using the SCP (Secure Copy) command. This allows us to read and process the mail
+        locally without needing direct remote access during mailbox parsing.
+        """
+    subprocess.check_call(["scp", "{}@{}:{}".format(REMOTE_USER, REMOTE_HOST, REMOTE_PATH), LOCAL_PATH])
 
-mbox = mailbox.mbox(MAILBOX_PATH)
 
-print("Reading mailbox: {}\n".format(MAILBOX_PATH))
+def read_mailbox():
+    if not os.path.exists(LOCAL_PATH):
+        print "Mailbox file does not exist:", LOCAL_PATH
+        sys.exit(1)
 
-for message in mbox:
-    subject = message['subject']
-    sender = message['from']
+    mbox = mailbox.mbox(LOCAL_PATH)
+    for message in mbox:
+        sender = message['from']
+        subject = message['subject']
 
-    if message.is_multipart():
-        parts = []
-        for part in message.walk():
-            content_type = part.get_content_type()
-            if content_type == 'text/plain':
-                parts.append(part.get_payload(decode=True))
-        body = b''.join(parts).decode('utf-8', 'ignore')
-    else:
-        body = message.get_payload(decode=True)
+        if message.is_multipart():
+            body_parts = [part.get_payload(decode=True) for part in message.walk() if
+                          part.get_content_type() == 'text/plain']
+            body = ''.join(body_parts)
+        else:
+            body = message.get_payload(decode=True)
+
         if body:
             body = body.decode('utf-8', 'ignore')
-        else:
-            body = ''
 
-    print("From: {}".format(sender))
-    print("Subject: {}".format(subject))
-    print("Body snippet: {}".format(body[:100].replace('\n', ' ')))
-    print("-" * 40)
+        print "From: {}".format(sender)
+        print "Subject: {}".format(subject)
+        print "Body snippet: {}".format(body[:100].replace('\n', ' ').replace('\r', ' '))
+        print "-" * 40
+
+
+if __name__ == "__main__":
+    scp_mailbox()
+    read_mailbox()
