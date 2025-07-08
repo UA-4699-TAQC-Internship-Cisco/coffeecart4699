@@ -2,12 +2,10 @@
 Library    SeleniumLibrary
 Library    Process
 Library    Collections
+Resource       ..\src\resources\variables.resource
 
-*** Variables ***
-${BROWSER}    Chrome
-${URL}        https://coffee-cart.app/
-${TIMEOUT}          15 seconds
-${DELAY}            0.5
+****** Variables ***
+
 
 *** Keywords ***
 Open Browser To Menu Page
